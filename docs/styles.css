@@ -187,6 +187,8 @@ button:active {
     font-weight: 700;
     color: #3d5f7a;
     font-size: 15px;
+    display: inline-block;
+    min-width: 40px;
 }
 
 .value-desc {
@@ -202,12 +204,13 @@ button:active {
 .ca-only-badge {
     background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
     color: white;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     display: inline-block;
-    margin-left: 8px;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 .dropped-badge {
@@ -535,8 +538,10 @@ button:active {
 
     .value-table th,
     .value-table td {
-        padding: 8px;
-    }
+    padding: 12px;
+    border-bottom: 1px solid #e5e9ed;
+    vertical-align: middle;
+}
 
     .attribute-card {
         padding: 16px;
