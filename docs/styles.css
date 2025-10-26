@@ -43,6 +43,18 @@ body {
     font-weight: 400;
 }
 
+.spec-link {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.spec-link:hover {
+    color: #a8d5ff;
+    border-bottom: 1px solid #a8d5ff;
+}
+
 /* Search Box */
 .search-box {
     padding: 30px 40px;
