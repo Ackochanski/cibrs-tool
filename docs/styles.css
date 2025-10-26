@@ -213,120 +213,120 @@ button:active {
 }
 
 /* Attribute Directory */
+/* Attribute Directory */
 .attribute-directory {
     display: grid;
-    gap: 20px;
+    gap: 24px;
 }
 
 .attribute-card {
     background: white;
     border: 2px solid #e5e9ed;
     border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
 }
 
 .attribute-card h3 {
-    color: #2c4a64;
-    font-size: 20px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 3px solid #5a7c9c;
+    background: linear-gradient(135deg, #2c4a64 0%, #3d5f7a 100%);
+    color: white;
+    font-size: 22px;
+    margin: 0;
+    padding: 20px 24px;
+    border-bottom: none;
 }
 
 .attribute-card-subtitle {
-    color: #6c757d;
-    font-size: 14px;
-    margin-bottom: 16px;
+    background: #f7f9fb;
+    color: #5a6c7d;
+    font-size: 15px;
+    padding: 16px 24px;
+    margin: 0;
     font-style: italic;
+    border-bottom: 2px solid #e5e9ed;
 }
 
-/* Attribute Sections */
-.attribute-section {
-    margin: 20px 0;
-    padding: 16px;
-    border-radius: 8px;
-    border-left: 4px solid #5a7c9c;
+.value-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
 }
 
-.section-dropped {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
-    border-left-color: #dc3545;
+.value-table thead {
+    background: linear-gradient(135deg, #f7f9fb 0%, #eef2f5 100%);
 }
 
-.section-valid {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-left-color: #4a7c9e;
-}
-
-.section-title {
-    font-size: 16px;
+.value-table th {
+    padding: 16px 20px;
+    text-align: left;
     font-weight: 700;
     color: #2c4a64;
-    margin-bottom: 8px;
-}
-
-.section-dropped .section-title {
-    color: #dc3545;
-}
-
-.section-valid .section-title {
-    color: #4a7c9e;
-}
-
-.section-note {
+    border-bottom: 3px solid #d5dce3;
     font-size: 14px;
-    color: #6c757d;
-    font-style: italic;
-    margin-bottom: 12px;
-    padding-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.code-list {
-    display: grid;
-    gap: 8px;
+.value-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f3f6;
+    vertical-align: middle;
+    font-size: 15px;
 }
 
-.code-row {
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    background: white;
-    border-radius: 6px;
-    border: 1px solid #e5e9ed;
+.value-table tbody tr {
     transition: all 0.2s ease;
 }
 
-.code-row:hover {
-    background: #f8f9fa;
-    border-color: #3d5f7a;
-    transform: translateX(4px);
+.value-table tbody tr:hover {
+    background: #f7f9fb;
+    transform: scale(1.01);
 }
 
-.code-value {
+.value-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.value-code {
     font-family: 'Courier New', monospace;
     font-weight: 700;
-    color: #3d5f7a;
-    font-size: 15px;
+    color: #2c4a64;
+    font-size: 16px;
+    background: #eef2f5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
     min-width: 50px;
-    flex-shrink: 0;
+    text-align: center;
 }
 
-.code-description {
+.value-desc {
     color: #4a5568;
-    font-size: 15px;
-    flex: 1;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.value-maps-to {
+    color: #2e7d32;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 .ca-only-badge {
-    background: linear-gradient(135deg, #4a7c9e 0%, #5a9bc4 100%);
+    background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
     color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
     font-weight: 700;
-    margin: 0 10px;
-    flex-shrink: 0;
+    display: inline-block;
+    margin-left: 12px;
+    vertical-align: middle;
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Result Card */
@@ -573,6 +573,47 @@ button:active {
 
     .code-value {
         min-width: 40px;
+    }
+
+    .value-table {
+        font-size: 13px;
+    }
+
+    .value-table th,
+    .value-table td {
+        padding: 12px 16px;
+    }
+
+    .attribute-card {
+        padding: 0;
+    }
+
+    .attribute-card h3 {
+        font-size: 18px;
+        padding: 16px 20px;
+    }
+
+    .attribute-card-subtitle {
+        font-size: 13px;
+        padding: 12px 20px;
+    }
+
+    .value-code {
+        font-size: 14px;
+        padding: 4px 8px;
+        min-width: 40px;
+    }
+
+    .ca-only-badge {
+        display: block;
+        margin-left: 0;
+        margin-top: 6px;
+        width: fit-content;
+    }
+
+    .value-table th:nth-child(3),
+    .value-table td:nth-child(3) {
+        font-size: 12px;
     }
 }
 
