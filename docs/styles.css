@@ -516,6 +516,24 @@ button:active {
     .code-directory {
         grid-template-columns: 1fr;
     }
+
+    .value-table {
+        font-size: 14px;
+    }
+
+    .value-table th,
+    .value-table td {
+        padding: 8px;
+    }
+
+    .attribute-card {
+        padding: 16px;
+    }
+
+    .value-table th:nth-child(3),
+    .value-table td:nth-child(3) {
+        display: none;
+    }
 }
 
 /* Scrollbar Styling */
@@ -550,6 +568,6 @@ button:active {
     }
 }
 
-.result, .code-directory {
+.result, .code-directory, .attribute-directory {
     animation: fadeIn 0.5s ease;
 }
