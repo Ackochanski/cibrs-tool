@@ -3,7 +3,7 @@ function search() {
     const results = document.getElementById('results');
     
     if (!input) {
-        results.innerHTML = '<div class="error-msg">Please enter a NIBRS offense code (e.g., 13A, 09A, 220, 520)</div>';
+        results.innerHTML = '<div class="error-msg">Please enter a NIBRS offense code (e.g., 13A, 09A, 220, 90D)</div>';
         return;
     }
     
@@ -17,22 +17,27 @@ function search() {
                 • 13A (Aggravated Assault)<br>
                 • 09A (Murder/Homicide)<br>
                 • 220 (Burglary)<br>
-                • 23D (Theft From Building)<br>
-                • 520 (Weapon Law Violations)<br>
-                • ALL (Universal requirements)
+                • 90D (DUI)<br>
+                • ALL (Universal requirements)<br><br>
+                Or click "View All Codes" to see the complete list.
             </div>`;
         return;
     }
     
+    displayCodeDetails(input, data);
+}
+
+function displayCodeDetails(code, data) {
+    const results = document.getElementById('results');
     let html = `<div class="result">`;
-    html += `<h2>${input}: ${data.name}</h2>`;
-    html += `<p style="color: #666; margin-bottom: 20px;">${data.category}</p>`;
+    html += `<h2>${code}: ${data.name}</h2>`;
+    html += `<p style="color: #4a5568; margin-bottom: 20px;">${data.category}</p>`;
     
-    html += `<h3 style="margin-top: 20px; color: #1a5490;">Required Data Elements:</h3>`;
+    html += `<h3 style="margin-top: 20px; color: #2c4a64;">Required Data Elements:</h3>`;
     
     for (const [elemNum, details] of Object.entries(data.requiredElements)) {
         html += `<div class="code-item">`;
-        html += `<h4 style="color: #d9534f; margin-bottom: 10px;">Element ${elemNum}: ${details.element}</h4>`;
+        html += `<h4 style="color: #3d5f7a; margin-bottom: 10px;">Element ${elemNum}: ${details.element}</h4>`;
         
         if (details.value) {
             html += `<div class="info-row"><strong>Value:</strong><span>${details.value}</span></div>`;
@@ -49,7 +54,7 @@ function search() {
         }
         
         if (details.droppedCodes) {
-            html += `<div class="warning" style="background: #f8d7da;"><strong>⛔ Dropped:</strong> ${details.droppedCodes}</div>`;
+            html += `<div class="warning" style="background: #ffe5e8;"><strong>⛔ Dropped:</strong> ${details.droppedCodes}</div>`;
         }
         
         if (details.caValues) {
@@ -68,6 +73,14 @@ function search() {
             html += `<div class="info-row"><strong>Example:</strong><span>${details.example}</span></div>`;
         }
         
+        if (details.note) {
+            html += `<div class="info-row"><strong>Note:</strong><span>${details.note}</span></div>`;
+        }
+        
+        if (details.values) {
+            html += `<div class="info-row"><strong>Values:</strong><span>${details.values}</span></div>`;
+        }
+        
         if (details.xmlFormat) {
             html += `<div class="xml-code">${escapeHtml(details.xmlFormat)}</div>`;
         }
@@ -78,6 +91,82 @@ function search() {
     html += `</div>`;
     
     results.innerHTML = html;
+}
+
+function showAllCodes() {
+    const results = document.getElementById('results');
+    
+    // Organize codes by category
+    const categories = {
+        "Group A - Crimes Against Persons": [],
+        "Group A - Crimes Against Property": [],
+        "Group A - Crimes Against Society": [],
+        "Group B Arrest - DUI/Traffic": [],
+        "Group B Arrest - Alcohol": [],
+        "Group B Arrest - Public Order": [],
+        "Group B Arrest - Financial": [],
+        "Group B Arrest - Family": [],
+        "Group B Arrest - Sex Offense": [],
+        "Group B Arrest - Status Offense": [],
+        "Group B Arrest - Property": [],
+        "Group B Arrest - Miscellaneous": [],
+        "Universal Requirements": []
+    };
+    
+    // Sort codes into categories
+    for (const [code, data] of Object.entries(offenseRequirements)) {
+        if (!categories[data.category]) {
+            categories[data.category] = [];
+        }
+        categories[data.category].push({ code, name: data.name, category: data.category });
+    }
+    
+    let html = `
+        <button onclick="location.reload()" class="back-btn">← Back to Search</button>
+        <div class="code-directory">
+            <div class="code-directory-header">
+                <h2>All NIBRS/CIBRS Offense Codes</h2>
+                <p style="margin-top: 8px; opacity: 0.9;">Click any code to view validation requirements</p>
+            </div>
+    `;
+    
+    // Display each category
+    for (const [category, codes] of Object.entries(categories)) {
+        if (codes.length === 0) continue;
+        
+        html += `<div class="category-section">`;
+        html += `<div class="category-title">${category} (${codes.length})</div>`;
+        html += `</div>`;
+        
+        // Sort codes
+        codes.sort((a, b) => {
+            // Numbers first, then letters
+            const aNum = parseInt(a.code);
+            const bNum = parseInt(b.code);
+            if (!isNaN(aNum) && !isNaN(bNum)) return aNum - bNum;
+            return a.code.localeCompare(b.code);
+        });
+        
+        for (const item of codes) {
+            html += `
+                <div class="code-card" onclick="searchCode('${item.code}')">
+                    <div class="code-card-number">${item.code}</div>
+                    <div class="code-card-name">${item.name}</div>
+                    <div class="code-card-category">${item.category}</div>
+                </div>
+            `;
+        }
+    }
+    
+    html += `</div>`;
+    
+    results.innerHTML = html;
+}
+
+function searchCode(code) {
+    document.getElementById('searchInput').value = code;
+    search();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function escapeHtml(text) {
