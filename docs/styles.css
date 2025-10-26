@@ -213,7 +213,6 @@ button:active {
 }
 
 /* Attribute Directory */
-/* Attribute Directory */
 .attribute-directory {
     display: grid;
     gap: 24px;
@@ -299,6 +298,7 @@ button:active {
     display: inline-block;
     min-width: 50px;
     text-align: center;
+    margin-right: 8px;
 }
 
 .value-desc {
@@ -322,11 +322,12 @@ button:active {
     font-size: 11px;
     font-weight: 700;
     display: inline-block;
-    margin-left: 12px;
+    margin-left: 8px;
     vertical-align: middle;
     box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 /* Result Card */
@@ -434,20 +435,13 @@ button:active {
     font-size: 16px;
 }
 
-.warning[style*="background: #f8d7da"] {
-    background: linear-gradient(135deg, #ffe5e8 0%, #ffd3d8 100%) !important;
-    border-left-color: #dc3545;
-}
-
-.warning[style*="background: #f8d7da"] strong {
-    color: #721c24;
-}
-
+.warning[style*="background: #f8d7da"],
 .warning[style*="background: #ffe5e8"] {
     background: linear-gradient(135deg, #ffe5e8 0%, #ffd3d8 100%) !important;
     border-left-color: #dc3545;
 }
 
+.warning[style*="background: #f8d7da"] strong,
 .warning[style*="background: #ffe5e8"] strong {
     color: #721c24;
 }
@@ -563,18 +557,6 @@ button:active {
         grid-template-columns: 1fr;
     }
 
-    .attribute-card {
-        padding: 16px;
-    }
-
-    .code-row {
-        flex-wrap: wrap;
-    }
-
-    .code-value {
-        min-width: 40px;
-    }
-
     .value-table {
         font-size: 13px;
     }
@@ -582,10 +564,6 @@ button:active {
     .value-table th,
     .value-table td {
         padding: 12px 16px;
-    }
-
-    .attribute-card {
-        padding: 0;
     }
 
     .attribute-card h3 {
@@ -602,6 +580,7 @@ button:active {
         font-size: 14px;
         padding: 4px 8px;
         min-width: 40px;
+        margin-right: 4px;
     }
 
     .ca-only-badge {
