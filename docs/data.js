@@ -505,6 +505,199 @@ const offenseRequirements = {
     }
   },
 
+  "90A": {
+    name: "Bad Checks",
+    category: "Group B Arrest - Financial",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90A", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes", caRequirement: "CA codes: 1=Non-Binary, 2=Trans-Female, 3=Trans-Male (not sent to FBI)" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes: 1=Hispanic, 2-9+E (Asian), X-Z+V (Pacific), S=Other" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", caRequirement: "CJIS Code + Type + Section + Level" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)", values: "A=Alcohol, M=Marijuana, O=Other, N=None", errors: "CAA30-CAA33" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (Age≥18)", values: "A=Referred, R=Released, C=Complaint", errors: "CAA34-CAA36" }
+    }
+  },
+
+  "90B": {
+    name: "Curfew/Loitering/Vagrancy Violations",
+    category: "Group B Arrest - Public Order",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90B", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" }
+    }
+  },
+
+  "90C": {
+    name: "Disorderly Conduct",
+    category: "Group B Arrest - Public Order",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90C", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (Age≥18)" }
+    }
+  },
+
+  "90D": {
+    name: "Driving Under the Influence",
+    category: "Group B Arrest - DUI/Traffic",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90D", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes", caRequirement: "CA codes: 1=Non-Binary, 2=Trans-Female, 3=Trans-Male" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes: 1=Hispanic, 2-9+E, X-Z+V, S=Other" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", caRequirement: "Must provide CJIS Code, Code Type, Section, Level", errors: "CAA23-CAA26, CAA40, CAA90" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)", values: "A=Alcohol, M=Marijuana, O=Other, N=None (mutually exclusive)", validation: "No duplicates allowed; N cannot combine with A/M/O", errors: "CAA30-CAA33" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (when Age≥18)", values: "A=Referred to Other Authority, R=Released, C=Complaint Sought", errors: "CAA34-CAA36" }
+    }
+  },
+
+  "90E": {
+    name: "Drunkenness",
+    category: "Group B Arrest - Alcohol",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90E", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)", validation: "Typically A=Alcohol" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (Age≥18)" }
+    }
+  },
+
+  "90F": {
+    name: "Family Offenses, Nonviolent",
+    category: "Group B Arrest - Family",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90F", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" }
+    }
+  },
+
+  "90G": {
+    name: "Liquor Law Violations",
+    category: "Group B Arrest - Alcohol",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90G", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "52": { element: "Disposition of Arrestee Under 18", mandatory: "Conditional (Age<18)", values: "1=Referred to Probation, 2=Referred to Other Authority" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" }
+    }
+  },
+
+  "90H": {
+    name: "Peeping Tom",
+    category: "Group B Arrest - Sex Offense",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90H", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" }
+    }
+  },
+
+  "90I": {
+    name: "Runaway",
+    category: "Group B Arrest - Status Offense",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90I", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes", validation: "Must be under 18" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "52": { element: "Disposition of Arrestee Under 18", mandatory: "Yes", values: "1=Referred to Probation, 2=Referred to Other Authority" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" }
+    }
+  },
+
+  "90J": {
+    name: "Trespass of Real Property",
+    category: "Group B Arrest - Property",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90J", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (Age≥18)" }
+    }
+  },
+
+  "90Z": {
+    name: "All Other Offenses",
+    category: "Group B Arrest - Miscellaneous",
+    requiredElements: {
+      "45": { element: "Arrest UCR Code", value: "90Z", mandatory: "Yes" },
+      "46": { element: "Arrest Date", mandatory: "Yes" },
+      "47": { element: "Age of Arrestee", mandatory: "Yes" },
+      "48": { element: "Sex of Arrestee", mandatory: "Yes", caRequirement: "CA codes: 1=Non-Binary, 2=Trans-Female, 3=Trans-Male" },
+      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes: 1=Hispanic, 2-9+E, X-Z+V, S=Other" },
+      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", caRequirement: "CJIS Code + Type + Section + Level" },
+      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)", values: "A, M, O, or N" },
+      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (Age≥18)" }
+    }
+  },
+
+  "26F": {
+    name: "Identity Theft",
+    category: "Group A - Crimes Against Property",
+    requiredElements: {
+      "6": { element: "UCR Offense Code", value: "26F", mandatory: "Yes" },
+      "9": { element: "Location Type", mandatory: "Yes", caRequirement: "Use CA codes" },
+      "15": { element: "Property Description", mandatory: "Yes", caRequirement: "07→88, 46→18, 77→38" },
+      "16": { element: "Value of Property", mandatory: "Yes" },
+      "25": { element: "Type of Victim", mandatory: "Yes" },
+      "C3": { element: "Identity Theft Indicator", mandatory: "Should be Y", note: "This is the identity theft offense" }
+    }
+  },
+
+  "36A": {
+    name: "Incest",
+    category: "Group A - Crimes Against Society",
+    requiredElements: {
+      "6": { element: "UCR Offense Code", value: "36A", mandatory: "Yes" },
+      "9": { element: "Location Type", mandatory: "Yes" },
+      "25": { element: "Type of Victim", mandatory: "Yes" },
+      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" }
+    }
+  },
+
+  "36B": {
+    name: "Statutory Rape",
+    category: "Group A - Crimes Against Society",
+    requiredElements: {
+      "6": { element: "UCR Offense Code", value: "36B", mandatory: "Yes" },
+      "9": { element: "Location Type", mandatory: "Yes" },
+      "25": { element: "Type of Victim", mandatory: "Yes" },
+      "26": { element: "Age of Victim", mandatory: "Yes", validation: "Must be under statutory age" },
+      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" }
+    }
+  },
+
   "ALL": {
     name: "Elements Required for ALL Offenses",
     category: "Universal Requirements",
