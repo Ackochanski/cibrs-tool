@@ -1,0 +1,6 @@
+/* Minimal styles; customize as needed */
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.5; }
+#q { width: 100%; padding: 0.6rem 0.8rem; font-size: 1rem; }
+.row { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
