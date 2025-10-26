@@ -295,23 +295,30 @@ function showAllAttributes() {
         },
         
         "Element 31: Aggravated Assault/Homicide Circumstances": {
-            subtitle: "Circumstances surrounding assault or homicide",
-            droppedValues: [],
-            values: [
-                { code: "01", desc: "Argument" },
-                { code: "02", desc: "Assault on Law Enforcement Officer" },
-                { code: "03", desc: "Drug Dealing" },
-                { code: "04", desc: "Gangland (Organized Crime Involvement)" },
-                { code: "05", desc: "Juvenile Gang" },
-                { code: "06", desc: "Lovers' Triangle" },
-                { code: "07", desc: "Mercy Killing (Not Applicable to Aggravated Assault)" },
-                { code: "08", desc: "Other Felony Involved" },
-                { code: "09", desc: "Other Circumstances" },
-                { code: "10", desc: "Unknown Circumstances" },
-                { code: "30", desc: "Criminal Killed by Private Citizen" },
-                { code: "31", desc: "Criminal Killed by Police Officer" }
-            ]
-        },
+    subtitle: "Circumstances surrounding assault or homicide",
+    droppedValues: ["01 (Argument)", "04 (Gangland)"],
+    values: [
+        { code: "AD", desc: "Argument over Drugs (CA)", mapsTo: "01 (FBI)" },
+        { code: "AM", desc: "Argument over Money (CA)", mapsTo: "01 (FBI)" },
+        { code: "AP", desc: "Argument over Property (CA)", mapsTo: "01 (FBI)" },
+        { code: "AO", desc: "Argument Other (CA)", mapsTo: "01 (FBI)" },
+        { code: "02", desc: "Assault on Law Enforcement Officer" },
+        { code: "03", desc: "Drug Dealing" },
+        { code: "GD", desc: "Gang - Drive By (CA)", mapsTo: "04 (FBI)" },
+        { code: "GE", desc: "Gang - Execution (CA)", mapsTo: "04 (FBI)" },
+        { code: "GR", desc: "Gang - Retribution (CA)", mapsTo: "04 (FBI)" },
+        { code: "GO", desc: "Gang - Other (CA)", mapsTo: "04 (FBI)" },
+        { code: "05", desc: "Juvenile Gang" },
+        { code: "06", desc: "Lovers' Triangle" },
+        { code: "07", desc: "Mercy Killing (Not Applicable to Aggravated Assault)" },
+        { code: "08", desc: "Other Felony Involved" },
+        { code: "OL", desc: "Lover's Triangle (CA)", mapsTo: "09 (FBI)" },
+        { code: "OC", desc: "Child Abuse (CA)", mapsTo: "09 (FBI)" },
+        { code: "10", desc: "Unknown Circumstances" },
+        { code: "30", desc: "Criminal Killed by Private Citizen" },
+        { code: "31", desc: "Criminal Killed by Police Officer" }
+    ]
+},
         
         "Element 35: Relationship of Victim to Offender": {
             subtitle: "California uses 44 specific relationship codes",
