@@ -1,18 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Offline Code Search</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main id="app">
-      <h1>Offline Code Search</h1>
-      <input id="q" type="search" placeholder="Search codes like 9, 13, 28, C12, C51" autofocus />
-      <div id="results"></div>
-    </main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIBRS/CIBRS Validation Lookup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NIBRS/CIBRS Validation Lookup</h1>
+        <p class="subtitle">CIBRS XML Technical Specifications Version 2020.1</p>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Enter NIBRS offense code (e.g., 13A, 09A, 220, ALL)">
+            <button onclick="search()">Search</button>
+        </div>
+
+        <div id="results"></div>
+    </div>
+
     <script src="data.js"></script>
     <script src="app.js"></script>
-  </body>
+</body>
 </html>
