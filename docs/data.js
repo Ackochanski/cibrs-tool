@@ -788,4 +788,5 @@ const offenseRequirements = {
         values: "01-08: Prison Gang, Street Gang, OMG, etc."
       }
     }
-  };
+  }
+};
