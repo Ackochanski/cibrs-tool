@@ -615,7 +615,7 @@ const offenseRequirements = {
         values: "A=Referred to Other Authority, R=Released, C=Complaint Sought"
       }
     }
-  }
+  },
 
   "90E": {
     name: "Drunkenness",
