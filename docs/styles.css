@@ -129,6 +129,16 @@ button:active {
     box-shadow: 0 6px 16px rgba(74, 124, 158, 0.4);
 }
 
+.quaternary-btn {
+    background: linear-gradient(135deg, #d84315 0%, #ff6f00 100%);
+    box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3);
+}
+
+.quaternary-btn:hover {
+    background: linear-gradient(135deg, #ff6f00 0%, #d84315 100%);
+    box-shadow: 0 6px 16px rgba(216, 67, 21, 0.4);
+}
+
 /* Results Container */
 #results {
     padding: 40px;
