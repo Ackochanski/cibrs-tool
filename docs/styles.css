@@ -600,9 +600,11 @@ button:active {
         width: fit-content;
     }
 
-    .value-table th:nth-child(3),
-    .value-table td:nth-child(3) {
-        font-size: 12px;
+     .value-table th:nth-child(3),
+    .value-table td:nth-child(3),
+    .value-table th:nth-child(4),
+    .value-table td:nth-child(4) {
+        display: none;
     }
 }
 
