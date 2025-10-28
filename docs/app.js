@@ -45,6 +45,9 @@ function displayCodeDetails(code, data) {
         
         html += `<div class="info-row"><strong>Mandatory:</strong><span>${details.mandatory}</span></div>`;
         
+        if (details.occurrence) {
+            html += `<div class="info-row"><strong>Occurrence:</strong><span>${details.occurrence}</span></div>`;
+        }
         if (details.format) {
             html += `<div class="info-row"><strong>Format:</strong><span>${details.format}</span></div>`;
         }
