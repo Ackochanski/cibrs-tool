@@ -121,15 +121,55 @@ const offenseRequirements = {
     name: "Aggravated Assault",
     category: "Group A - Crimes Against Persons",
     requiredElements: {
-      "6": { element: "UCR Offense Code", value: "13A", mandatory: "Yes" },
-      "8A": { element: "Bias Motivation", mandatory: "Yes", caRequirement: "BA (Anti-Citizenship)→33" },
-      "9": { element: "Location Type", mandatory: "Yes", caRequirement: "Use CA codes (DA-DI, RA-RG, S1-S3)", droppedCodes: "09, 20, 25, 53" },
-      "13": { element: "Type Weapon/Force", mandatory: "Yes", caRequirement: "HA (Imitation Handgun)→12, AA-AC (Asphyxiation)→85, OA-OE→90", validation: "At least one weapon code required" },
-      "31": { element: "Aggravated Assault Circumstances", mandatory: "Yes", caValues: "01→30, 04→01, 09→02" },
-      "25": { element: "Type of Victim", mandatory: "Yes" },
-      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54", validation: "Modified Error 472C" },
-      "C12": { element: "Hate Crime Offensive Act", mandatory: "Conditional (if bias≠88)", values: "01-14", errors: "CA890-891" },
-      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", example: "CJIS:48089, Type:PC, Section:148.10(A), Level:F" }
+      "6": {
+        element: "UCR Offense Code",
+        value: "13A",
+        mandatory: "Yes",
+        occurrence: "Once per offense (up to 10 offenses per incident)"
+      },
+      "8A": {
+        element: "Bias Motivation",
+        mandatory: "Yes",
+        occurrence: "Once per offense",
+        caRequirement: "BA (Anti-Citizenship)→33"
+      },
+      "9": {
+        element: "Location Type",
+        mandatory: "Yes",
+        occurrence: "Once per offense",
+        caRequirement: "Use CA codes (DA-DI, RA-RG, S1-S3)",
+        droppedCodes: "09, 20, 25, 53"
+      },
+      "13": {
+        element: "Type Weapon/Force",
+        mandatory: "Yes",
+        occurrence: "Up to 3 per offense",
+        caRequirement: "HA (Imitation Handgun)→12, AA-AC (Asphyxiation)→85, OA-OE→90",
+        validation: "At least one weapon code required"
+      },
+      "25": {
+        element: "Type of Victim",
+        mandatory: "Yes",
+        occurrence: "Once per victim (up to 999 victims per incident)"
+      },
+      "35": {
+        element: "Relationship Victim to Offender",
+        mandatory: "Yes",
+        occurrence: "Once per victim-offender connection",
+        caRequirement: "Use CA codes 10-54"
+      },
+      "C12": {
+        element: "Hate Crime Offensive Act",
+        mandatory: "Conditional (if bias≠88)",
+        occurrence: "Once per offense (up to 10 offenses per incident)",
+        values: "01-14"
+      },
+      "C42-C45": {
+        element: "CA Offense Details (CJIS Code, Type, Section, Level)",
+        mandatory: "Yes (CA)",
+        occurrence: "Once per offense",
+        example: "CJIS:48089, Type:PC, Section:148.10(A), Level:F"
+      }
     }
   },
 
@@ -551,16 +591,31 @@ const offenseRequirements = {
     name: "Driving Under the Influence",
     category: "Group B Arrest - DUI/Traffic",
     requiredElements: {
-      "45": { element: "Arrest UCR Code", value: "90D", mandatory: "Yes" },
-      "46": { element: "Arrest Date", mandatory: "Yes" },
-      "47": { element: "Age of Arrestee", mandatory: "Yes" },
-      "48": { element: "Sex of Arrestee", mandatory: "Yes", caRequirement: "CA codes: 1=Non-Binary, 2=Trans-Female, 3=Trans-Male" },
-      "49": { element: "Race of Arrestee", mandatory: "Yes", caRequirement: "Use CA codes: 1=Hispanic, 2-9+E, X-Z+V, S=Other" },
-      "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", caRequirement: "Must provide CJIS Code, Code Type, Section, Level", errors: "CAA23-CAA26, CAA40, CAA90" },
-      "C51": { element: "Arrestee Suspected of Using", mandatory: "Yes (CA)", values: "A=Alcohol, M=Marijuana, O=Other, N=None (mutually exclusive)", validation: "No duplicates allowed; N cannot combine with A/M/O", errors: "CAA30-CAA33" },
-      "C61": { element: "Disposition of Arrestee 18+", mandatory: "Conditional (when Age≥18)", values: "A=Referred to Other Authority, R=Released, C=Complaint Sought", errors: "CAA34-CAA36" }
+      "45": {
+        element: "Arrest UCR Code",
+        value: "90D",
+        mandatory: "Yes",
+        occurrence: "Once per arrestee (up to 99 per incident)"
+      },
+      "47": {
+        element: "Age of Arrestee",
+        mandatory: "Yes",
+        occurrence: "Once per arrestee"
+      },
+      "C51": {
+        element: "Arrestee Suspected of Using",
+        mandatory: "Yes (CA)",
+        occurrence: "Up to 3 values per arrestee",
+        values: "A=Alcohol, M=Marijuana, O=Other, N=None (mutually exclusive)"
+      },
+      "C61": {
+        element: "Disposition of Arrestee 18+",
+        mandatory: "Conditional (when Age≥18)",
+        occurrence: "Once per arrestee",
+        values: "A=Referred to Other Authority, R=Released, C=Complaint Sought"
+      }
     }
-  },
+  }
 
   "90E": {
     name: "Drunkenness",
@@ -702,16 +757,35 @@ const offenseRequirements = {
     name: "Elements Required for ALL Offenses",
     category: "Universal Requirements",
     requiredElements: {
-      "1": { element: "ORI Number", mandatory: "Yes", format: "9-character NCIC ORI", validation: "Must be valid, active CA ORI" },
-      "2": { element: "Incident Number", mandatory: "Yes", format: "12-character alphanumeric", validation: "Unique per ORI per year" },
-      "3": { element: "Incident Date/Hour", mandatory: "Yes", validation: "Cannot be in future" },
-      "4": { element: "Cleared Exceptionally", mandatory: "Conditional", validation: "Required if incident cleared exceptionally" },
-      "5": { element: "Exceptional Clearance Date", mandatory: "Conditional", validation: "Required when Element 4 present" },
-      "C1": { element: "Zip Code", mandatory: "Yes (CA)", format: "5-digit numeric", caRequirement: "Valid California zip code", errors: "CA820-821", xmlFormat: "<ca:ZipCode>90210</ca:ZipCode>" },
-      "C2": { element: "ARRC Indicator", mandatory: "Yes (CA)", values: "Y or N", errors: "CA822-823", xmlFormat: "<ca:ARRCIndicator>N</ca:ARRCIndicator>" },
-      "C3": { element: "Identity Theft Indicator", mandatory: "Yes (CA)", values: "Y or N", errors: "CA824-825", xmlFormat: "<ca:IdentityTheftIndicator>N</ca:IdentityTheftIndicator>" },
-      "C4": { element: "Gang Activity Indicator", mandatory: "Yes (CA)", values: "Y or N", errors: "CA826-828", validation: "Should be Y when offense has gang info", xmlFormat: "<ca:GangActivityIndicator>Y</ca:GangActivityIndicator>" },
-      "C5": { element: "Gang Type", mandatory: "Conditional (when C4=Y)", values: "01-08: Prison Gang, Street Gang, OMG, Organized Crime, Terrorist, Juvenile, Other, Unknown", errors: "CA829-831", xmlFormat: "<ca:GangType>02</ca:GangType>" }
+      "1": {
+        element: "ORI Number",
+        mandatory: "Yes",
+        occurrence: "Once per incident",
+        format: "9-character NCIC ORI"
+      },
+      "2": {
+        element: "Incident Number",
+        mandatory: "Yes",
+        occurrence: "Once per incident",
+        format: "12-character alphanumeric"
+      },
+      "C1": {
+        element: "Zip Code",
+        mandatory: "Yes (CA)",
+        occurrence: "Once per incident",
+        format: "5-digit numeric"
+      },
+      "C4": {
+        element: "Gang Activity Indicator",
+        mandatory: "Yes (CA)",
+        occurrence: "Once per incident",
+        values: "Y or N"
+      },
+      "C5": {
+        element: "Gang Type",
+        mandatory: "Conditional (when C4=Y)",
+        occurrence: "Once per incident",
+        values: "01-08: Prison Gang, Street Gang, OMG, etc."
+      }
     }
-  }
-};
+  };
