@@ -130,13 +130,13 @@ button:active {
 }
 
 .quaternary-btn {
-    background: linear-gradient(135deg, #d84315 0%, #ff6f00 100%);
-    box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3);
+    background: linear-gradient(135deg, #3a7d8f 0%, #4a9daf 100%);
+    box-shadow: 0 4px 12px rgba(58, 125, 143, 0.3);
 }
 
 .quaternary-btn:hover {
-    background: linear-gradient(135deg, #ff6f00 0%, #d84315 100%);
-    box-shadow: 0 6px 16px rgba(216, 67, 21, 0.4);
+    background: linear-gradient(135deg, #4a9daf 0%, #3a7d8f 100%);
+    box-shadow: 0 6px 16px rgba(58, 125, 143, 0.4);
 }
 
 /* Results Container */
