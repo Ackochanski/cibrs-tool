@@ -8,6 +8,12 @@ function search() {
     return;
   }
 
+  // Check if offenseRequirements is loaded
+  if (typeof offenseRequirements === 'undefined') {
+    results.innerHTML = '<div class="error-msg">Error: Offense requirements data not loaded. Please refresh the page.</div>';
+    return;
+  }
+
   const data = offenseRequirements[input];
 
   if (!data) {
@@ -112,6 +118,12 @@ function displayCodeDetails(code, data) {
 function showAllCodes() {
   const results = document.getElementById('results');
 
+  // Check if offenseRequirements is loaded
+  if (typeof offenseRequirements === 'undefined') {
+    results.innerHTML = '<div class="error-msg">Error: Offense requirements data not loaded. Please refresh the page.</div>';
+    return;
+  }
+
   const categories = {
     "Group A - Crimes Against Persons": [],
     "Group A - Crimes Against Property": [],
@@ -157,9 +169,8 @@ function showAllCodes() {
     html += `<div class="category-title">${escapeHtml(category)} (${codes.length})</div>`;
 
     for (const item of codes) {
-      // Use JSON.stringify to safely quote the argument for the inline handler
       html += `
-        <div class="code-card" onclick="searchCode(${JSON.stringify(item.code)})">
+        <div class="code-card" data-code="${escapeHtml(item.code)}">
           <div class="code-card-number">${escapeHtml(item.code)}</div>
           <div class="code-card-name">${escapeHtml(item.name)}</div>
           <div class="code-card-category">${escapeHtml(item.category)}</div>
@@ -172,6 +183,14 @@ function showAllCodes() {
 
   html += `</div>`;
   results.innerHTML = html;
+  
+  // Add event delegation for code card clicks
+  results.addEventListener('click', function(e) {
+    const codeCard = e.target.closest('.code-card');
+    if (codeCard && codeCard.dataset.code) {
+      searchCode(codeCard.dataset.code);
+    }
+  });
 }
 
 function searchCode(code) {
