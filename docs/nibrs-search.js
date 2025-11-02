@@ -388,6 +388,9 @@ function showAllAttributes() {
         { code: "52", desc: "Victim was Foster Child (CA)", mapsTo: "OF (FBI)" },
         { code: "53", desc: "Victim was Child of Boyfriend/Girlfriend (CA)", mapsTo: "BG (FBI)" },
         { code: "54", desc: "Victim was Gang Member (CA)", mapsTo: "RU (FBI)" },
+        { code: "55", desc: "Victim was Foster Sibling (CA)", mapsTo: "SB (FBI)" },
+        { code: "56", desc: "Victim was Student (CA)", mapsTo: "AQ (FBI)" },
+        { code: "57", desc: "Victim was Client (CA)", mapsTo: "AQ (FBI)" },
         { code: "AQ", desc: "Acquaintance" },
         { code: "BE", desc: "Babysittee" },
         { code: "BG", desc: "Boyfriend/Girlfriend" },
@@ -436,6 +439,35 @@ function showAllAttributes() {
         { code: "12", desc: "Verbal Slurs" },
         { code: "13", desc: "Other" },
         { code: "14", desc: "Unknown" }
+      ]
+    },
+
+    "Element C24: Victim By Association Type": {
+      subtitle: "Type of association when victim is targeted due to association (mandatory when C23=Y)",
+      values: [
+        { code: "01", desc: "Advocacy for" },
+        { code: "02", desc: "Identified with" },
+        { code: "03", desc: "On the grounds owned or rented by" },
+        { code: "04", desc: "Adjacent to" }
+      ]
+    },
+
+    "Element C25: Victim By Association Relation": {
+      subtitle: "What the victim is associated with (mandatory when C23=Y)",
+      values: [
+        { code: "01", desc: "Community Center" },
+        { code: "02", desc: "Education Facility" },
+        { code: "03", desc: "Family" },
+        { code: "04", desc: "Individual" },
+        { code: "05", desc: "Office" },
+        { code: "06", desc: "Meeting Hall" },
+        { code: "07", desc: "Place of Worship" },
+        { code: "08", desc: "Private Institution" },
+        { code: "09", desc: "Public Agency" },
+        { code: "10", desc: "Library" },
+        { code: "11", desc: "Other Person" },
+        { code: "12", desc: "Other Group" },
+        { code: "13", desc: "Other Entity" }
       ]
     },
 
@@ -580,8 +612,8 @@ function showElementReference() {
       { num: "35", name: "Relationship of Victim to Offender",   desc: "How victim knows offender",                      mandatory: "Conditional",  format: "2-Character Code" },
       { num: "C21",name: "Senior Citizen Indicator (CA)",        desc: "Whether victim is age 60+",                      mandatory: "Conditional",  format: "Y or N", caOnly: true },
       { num: "C23",name: "Victim by Association Indicator (CA)", desc: "Victim targeted due to association",             mandatory: "Conditional",  format: "Y or N", caOnly: true },
-      { num: "C24",name: "Victim by Association Type (CA)",      desc: "Type of association",                            mandatory: "Conditional",  format: "01-04", caOnly: true },
-      { num: "C25",name: "Victim by Association Relation (CA)",  desc: "What victim is associated with",                 mandatory: "Conditional",  format: "01-13", caOnly: true },
+      { num: "C24",name: "Victim by Association Type (CA)",      desc: "Type of association (when C23=Y)",               mandatory: "Conditional (when C23=Y)",  format: "01-04", caOnly: true },
+      { num: "C25",name: "Victim by Association Relation (CA)",  desc: "What victim is associated with (when C23=Y)",     mandatory: "Conditional (when C23=Y)",  format: "01-13", caOnly: true },
       { num: "C31",name: "Homicide Victim First Name (CA)",      desc: "First name for homicide victims",                mandatory: "Conditional (09A/B/C)", format: "2-20 Characters", caOnly: true },
       { num: "C32",name: "Homicide Victim Middle Name (CA)",     desc: "Middle name for homicide victims",               mandatory: "Optional",     format: "2-20 Characters", caOnly: true },
       { num: "C33",name: "Homicide Victim Last Name (CA)",       desc: "Last name for homicide victims",                 mandatory: "Conditional (09A/B/C)", format: "2-25 Characters", caOnly: true }
