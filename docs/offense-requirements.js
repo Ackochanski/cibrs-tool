@@ -13,6 +13,9 @@ const offenseRequirements = {
       "26": { element: "Age of Victim", mandatory: "Yes" },
       "27": { element: "Sex of Victim", mandatory: "Yes" },
       "28": { element: "Race of Victim", mandatory: "Yes", caRequirement: "Use CA codes: 1-9,E,X-Z,V,S instead of A,P" },
+      "C23": { element: "Victim by Association Indicator", mandatory: "Conditional (CA)", format: "Y or N", caRequirement: "Y if victim targeted due to association with place/entity" },
+      "C24": { element: "Victim by Association Type", mandatory: "Conditional (when C23=Y)", format: "01-04", values: "01=Advocacy for, 02=Identified with, 03=On grounds of, 04=Adjacent to" },
+      "C25": { element: "Victim by Association Relation", mandatory: "Conditional (when C23=Y)", format: "01-13", values: "01=Community Center, 02=Education Facility, 03=Family, etc." },
       "C31": { element: "Homicide Victim First Name", mandatory: "Yes (CA)", format: "2-20 characters", errors: "CA938-940" },
       "C33": { element: "Homicide Victim Last Name", mandatory: "Yes (CA)", format: "2-25 characters", errors: "CA942-944" },
       "C42-C45": { element: "CA Offense Details", mandatory: "Yes (CA)", caRequirement: "CJIS Code + Type + Section + Level" }
@@ -164,6 +167,27 @@ const offenseRequirements = {
         occurrence: "Once per offense (up to 10 offenses per incident)",
         values: "01-14"
       },
+      "C23": {
+        element: "Victim by Association Indicator",
+        mandatory: "Conditional (CA)",
+        occurrence: "Once per victim",
+        format: "Y or N",
+        caRequirement: "Y if victim targeted due to association with place/entity"
+      },
+      "C24": {
+        element: "Victim by Association Type",
+        mandatory: "Conditional (when C23=Y)",
+        occurrence: "Once per victim",
+        format: "01-04",
+        values: "01=Advocacy for, 02=Identified with, 03=On grounds of, 04=Adjacent to"
+      },
+      "C25": {
+        element: "Victim by Association Relation",
+        mandatory: "Conditional (when C23=Y)",
+        occurrence: "Once per victim",
+        format: "01-13",
+        values: "01=Community Center, 02=Education Facility, 03=Family, etc."
+      },
       "C42-C45": {
         element: "CA Offense Details (CJIS Code, Type, Section, Level)",
         mandatory: "Yes (CA)",
@@ -181,7 +205,10 @@ const offenseRequirements = {
       "9": { element: "Location Type", mandatory: "Yes", caRequirement: "Use CA codes" },
       "13": { element: "Type Weapon/Force", mandatory: "Conditional", validation: "Cannot use firearm codes (11-15, HA) - Error 269C" },
       "25": { element: "Type of Victim", mandatory: "Yes" },
-      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" }
+      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" },
+      "C23": { element: "Victim by Association Indicator", mandatory: "Conditional (CA)", format: "Y or N" },
+      "C24": { element: "Victim by Association Type", mandatory: "Conditional (when C23=Y)", format: "01-04" },
+      "C25": { element: "Victim by Association Relation", mandatory: "Conditional (when C23=Y)", format: "01-13" }
     }
   },
 
@@ -192,7 +219,10 @@ const offenseRequirements = {
       "6": { element: "UCR Offense Code", value: "13C", mandatory: "Yes" },
       "9": { element: "Location Type", mandatory: "Yes", caRequirement: "Use CA codes" },
       "25": { element: "Type of Victim", mandatory: "Yes" },
-      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" }
+      "35": { element: "Relationship Victim to Offender", mandatory: "Yes", caRequirement: "Use CA codes 10-54" },
+      "C23": { element: "Victim by Association Indicator", mandatory: "Conditional (CA)", format: "Y or N" },
+      "C24": { element: "Victim by Association Type", mandatory: "Conditional (when C23=Y)", format: "01-04" },
+      "C25": { element: "Victim by Association Relation", mandatory: "Conditional (when C23=Y)", format: "01-13" }
     }
   },
 
@@ -430,7 +460,10 @@ const offenseRequirements = {
       "9": { element: "Location Type", mandatory: "Yes", caRequirement: "Use CA codes" },
       "15": { element: "Property Description", mandatory: "Yes", caRequirement: "07→88, 46→18, 77→38" },
       "16": { element: "Value of Property", mandatory: "Yes" },
-      "25": { element: "Type of Victim", mandatory: "Yes" }
+      "25": { element: "Type of Victim", mandatory: "Yes" },
+      "C23": { element: "Victim by Association Indicator", mandatory: "Conditional (CA)", format: "Y or N" },
+      "C24": { element: "Victim by Association Type", mandatory: "Conditional (when C23=Y)", format: "01-04" },
+      "C25": { element: "Victim by Association Relation", mandatory: "Conditional (when C23=Y)", format: "01-13" }
     }
   },
 
