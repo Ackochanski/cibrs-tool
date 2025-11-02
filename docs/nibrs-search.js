@@ -443,7 +443,7 @@ function showAllAttributes() {
     },
 
     "Element C24: Victim By Association Type": {
-      subtitle: "Type of association when victim is targeted due to association (mandatory when C23=Y)",
+      subtitle: "Type of association when victim is targeted due to association (mandatory when C23: Victim By Association=Y)",
       values: [
         { code: "01", desc: "Advocacy for" },
         { code: "02", desc: "Identified with" },
@@ -453,7 +453,7 @@ function showAllAttributes() {
     },
 
     "Element C25: Victim By Association Relation": {
-      subtitle: "What the victim is associated with (mandatory when C23=Y)",
+      subtitle: "What the victim is associated with (mandatory when C23: Victim By Association=Y)",
       values: [
         { code: "01", desc: "Community Center" },
         { code: "02", desc: "Education Facility" },
